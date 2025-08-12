@@ -7,74 +7,141 @@
 
   <link rel="preload" href="tlo.webp" as="image">
   <link rel="stylesheet" href="styles.css">
-
-  <meta name="description" content="Klub Motorowodny Borne Sulinowo – kursy motorowodne i żeglarskie, szkolenia ISSA, wydarzenia nad Jeziorem Pile.">
+  <meta name="description" content="Kursy motorowodne i żeglarskie, szkolenia ISSA, wydarzenia nad Jeziorem Pile.">
   <meta property="og:title" content="Klub Motorowodny Borne Sulinowo">
-  <meta property="og:description" content="Kursy, szkolenia i wydarzenia na wodzie. Dołącz do nas.">
+  <meta property="og:description" content="Dołącz do szkoleń i wydarzeń na wodzie.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="logo.jpg">
   <meta name="color-scheme" content="light dark">
 </head>
 <body>
-  <header class="hero" role="banner">
+  <!-- NAV -->
+  <header class="topbar" id="topbar">
+    <a href="#" class="brand">
+      <img src="logo.jpg" alt="" width="32" height="32" loading="lazy"> KMB SULI
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="nav" class="nav">
+      <a href="#about">O nas</a>
+      <a href="#courses">Kursy</a>
+      <a href="#schedule">Terminy</a>
+      <a href="#gallery">Galeria</a>
+      <a href="#contact">Kontakt</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" role="banner">
     <div class="hero__overlay" aria-hidden="true"></div>
 
-    <div class="hero__top">
-      <div class="logo-row" aria-label="Logotypy organizatorów">
-        <img src="logo.jpg" width="180" height="180" alt="Logo Klubu Motorowodnego" class="logo-chip">
-        <img src="wopr.jpg" width="200" height="120" alt="Logo WOPR" class="logo-chip">
-        <img src="ISSA-logo.png" width="360" height="120" alt="Logo ISSA" class="logo-chip logo-chip--light">
-        <img src="pzm.JPG" width="180" height="180" alt="Logo PZM" class="logo-chip">
-      </div>
+    <div class="logo-row" aria-label="Logotypy">
+      <img src="logo.jpg" width="180" height="180" alt="Klub Motorowodny" class="logo-chip">
+      <img src="wopr.jpg" width="200" height="120" alt="WOPR" class="logo-chip">
+      <img src="ISSA-logo.png" width="360" height="120" alt="ISSA" class="logo-chip logo-chip--light">
+      <img src="pzm.JPG" width="180" height="180" alt="PZM" class="logo-chip">
     </div>
 
     <div class="hero__content">
       <h1>Klub Motorowodny Borne Sulinowo</h1>
-      <p>Instruktor żeglarstwa i motorowodniactwa w Bornem Sulinowie</p>
-      <nav class="cta">
-        <a class="btn" href="#courses">Zobacz kursy</a>
-        <a class="btn btn--ghost" href="#contact">Kontakt</a>
-      </nav>
+      <p>Szkolenia motorowodne i żeglarskie nad Jeziorem Pile</p>
+      <div class="cta">
+        <a class="btn" href="#schedule">Zapisz się</a>
+        <a class="btn btn--ghost" href="#courses">Sprawdź kursy</a>
+      </div>
     </div>
 
     <picture>
       <source srcset="tlo.webp" type="image/webp">
       <img src="tlo.webp" alt="" class="hero__bg" loading="eager" decoding="async">
     </picture>
-  </header>
+  </section>
 
   <main id="main">
+    <!-- ABOUT -->
     <section id="about" class="section">
       <h2>O nas</h2>
       <div class="card">
-        <p>Klub Motorowodny Borne Sulinowo promuje aktywności wodne i żeglarskie.
-        Prowadzimy kursy, szkolenia oraz organizujemy wydarzenia nad Jeziorem Pile.</p>
+        <p>Promujemy bezpieczną rekreację na wodzie. Prowadzimy kursy, egzaminy i wydarzenia. Bazujemy na praktyce i dobrym sprzęcie.</p>
+        <ul class="badges">
+          <li>Śródlądzie + Bałtyk</li>
+          <li>ISSA & PZMWiNW</li>
+          <li>Instruktorzy z doświadczeniem</li>
+        </ul>
       </div>
     </section>
 
+    <!-- COURSES -->
     <section id="courses" class="section">
       <h2>Nasze kursy</h2>
 
-      <div class="card">
-        <h3>Kursy PZMWiNW</h3>
-        <ul class="list">
-          <li><strong>Sternik motorowodny:</strong> min. 14 lat; do 16 lat — jednostki do 60 kW. Uprawnienia: śródlądzie oraz morze do 2 Mm od brzegu w dzień.</li>
-          <li><strong>Motorowodny sternik morski:</strong> min. 18 lat, min. 200 h rejsów morskich. Uprawnienia: śródlądzie i morze.</li>
-          <li><strong>Kapitan motorowodny:</strong> min. 18 lat, patent MSM + 6 rejsów (w tym ≥400 Mm). Uprawnienia: bez ograniczeń.</li>
-          <li><strong>Holowanie narciarza:</strong> uprawnienia do holowania narciarzy i obiektów rekreacyjnych (wymagany odpowiedni patent).</li>
-        </ul>
-      </div>
+      <div class="grid grid--2">
+        <div class="card">
+          <h3>PZMWiNW</h3>
+          <ul class="list">
+            <li><strong>Sternik motorowodny</strong> – min. 14 lat; do 16 r.ż. do 60 kW; śródlądzie + 2 Mm w dzień.</li>
+            <li><strong>Motorowodny sternik morski</strong> – min. 18 lat; ≥200 h rejsów morskich.</li>
+            <li><strong>Kapitan motorowodny</strong> – patent MSM + 6 rejsów (≥400 Mm).</li>
+            <li><strong>Holowanie narciarza</strong> – uprawnienia do holowania obiektów rekreacyjnych.</li>
+          </ul>
+        </div>
 
-      <div class="card">
-        <h3>Certyfikaty ISSA</h3>
-        <ul class="list">
-          <li><strong>Inland Power Yacht Skipper:</strong> min. 14 lat; śródlądzie + morze do 2 Mm w dzień; możliwość holowania.</li>
-          <li><strong>Inshore Power Yacht Skipper:</strong> min. 18 lat; żegluga przybrzeżna do 20 Mm; wymagane doświadczenie.</li>
-          <li><strong>Offshore Power Yacht Skipper:</strong> min. 18 lat; pełne morze bez ograniczeń; wymagane m.in. SRC, pierwsza pomoc, safety.</li>
-        </ul>
+        <div class="card">
+          <h3>ISSA</h3>
+          <ul class="list">
+            <li><strong>Inland Power Yacht Skipper</strong> – min. 14 lat; śródlądzie + do 2 Mm.</li>
+            <li><strong>Inshore Power Yacht Skipper</strong> – min. 18 lat; przybrzeżnie do 20 Mm.</li>
+            <li><strong>Offshore Power Yacht Skipper</strong> – min. 18 lat; bez ograniczeń, wymagane SRC, 1st aid, safety.</li>
+          </ul>
+        </div>
       </div>
     </section>
 
+    <!-- SCHEDULE -->
+    <section id="schedule" class="section">
+      <h2>Najbliższe terminy</h2>
+      <div class="grid grid--3">
+        <article class="card card--event">
+          <h4>Sternik motorowodny</h4>
+          <p class="event-meta">Sob–Ndz · Jezioro Pile · Start 9:00</p>
+          <p class="event-date">24–25.08</p>
+          <a class="btn btn--full" href="https://www.facebook.com/kmborne/" target="_blank" rel="noopener">Zapisz przez FB</a>
+        </article>
+
+        <article class="card card--event">
+          <h4>ISSA Inland PYS</h4>
+          <p class="event-meta">Pią–Sob · Borne Sulinowo</p>
+          <p class="event-date">06–07.09</p>
+          <a class="btn btn--full" href="mailto:zapisy@kmborne.pl?subject=Zapis%20na%20ISSA%20Inland">Zapis e-mail</a>
+        </article>
+
+        <article class="card card--event">
+          <h4>Holowanie narciarza</h4>
+          <p class="event-meta">1 dzień · Tor treningowy</p>
+          <p class="event-date">14.09</p>
+          <a class="btn btn--full" href="tel:+48502742526">Zadzwoń: 502 742 526</a>
+        </article>
+      </div>
+
+      <details class="card faq">
+        <summary>Nie pasuje termin? Kliknij i zgłoś własny.</summary>
+        <p>Wyślij preferencje terminu na <a href="mailto:zapisy@kmborne.pl">zapisy@kmborne.pl</a> lub zadzwoń. Zbieramy grupy od 4 osób.</p>
+      </details>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+      <h2>FAQ</h2>
+      <div class="grid grid--2">
+        <details class="card faq"><summary>Co zabrać na kurs?</summary><p>Dokument tożsamości, odzież na wodę, notatnik. Zapewniamy kamizelki.</p></details>
+        <details class="card faq"><summary>Czy są egzaminy na miejscu?</summary><p>Tak, organizujemy egzaminy po zakończeniu szkolenia (wg przepisów).</p></details>
+        <details class="card faq"><summary>Czy wystawiamy faktury?</summary><p>Tak, na życzenie uczestnika.</p></details>
+        <details class="card faq"><summary>Minimalny wiek?</summary><p>Od 14 lat (zgoda opiekuna). Szczegóły w opisach kursów.</p></details>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
     <section id="gallery" class="section">
       <h2>Galeria</h2>
       <div class="embed">
@@ -87,20 +154,45 @@
     </section>
   </main>
 
+  <!-- FOOTER -->
   <footer id="contact" class="footer" role="contentinfo">
     <address class="contact">
-      <p><strong>Adres:</strong> Słoneczna, 78-449 Borne Sulinowo, Polska</p>
+      <p><strong>Adres:</strong> Słoneczna, 78-449 Borne Sulinowo</p>
       <p><strong>Telefon:</strong> <a href="tel:+48502742526">+48 502 742 526</a></p>
       <nav class="social">
         <a href="https://www.facebook.com/kmborne/" rel="me">Facebook</a>
         <a href="https://www.instagram.com/klub_motorowodny_borne_s/" rel="me">Instagram</a>
       </nav>
     </address>
+    <div class="map">
+      <iframe
+        title="Mapa dojazdu"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Borne%20Sulinowo%20Pla%C5%BCa%20S%C5%82oneczna&output=embed">
+      </iframe>
+    </div>
     <p class="copy">© <span id="year"></span> Klub Motorowodny Borne Sulinowo</p>
   </footer>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const y = document.getElementById('year');
+    y.textContent = new Date().getFullYear();
+
+    const bar = document.getElementById('topbar');
+    const ham = document.getElementById('hamburger');
+    const nav = document.getElementById('nav');
+
+    const onScroll = () => {
+      bar.classList.toggle('topbar--scrolled', window.scrollY > 8);
+    };
+    document.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+
+    ham.addEventListener('click', () => {
+      const open = nav.classList.toggle('nav--open');
+      ham.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
   </script>
 </body>
 </html>
