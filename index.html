@@ -1,29 +1,100 @@
+OK. Masz **uniwersalną, odporną** wersję w jednym pliku (bez JS, nic się nie rozjedzie). Wrzucasz jako `index.html` i gotowe.
+
+```html
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Klub Motorowodny Borne Sulinowo</title>
+  <meta name="description" content="Kursy motorowodne i żeglarskie, szkolenia ISSA, wydarzenia nad Jeziorem Pile." />
+  <meta name="color-scheme" content="light dark" />
+  <style>
+    /* ===== Reset & base ===== */
+    :root{
+      --ink:#fff; --muted:#dfe3e6; --accent:#ffd700;
+      --chip:rgba(0,0,0,.55); --card:rgba(0,0,0,.72); --footer:rgba(15,32,39,.92);
+      --radius:16px; --shadow:0 12px 28px rgba(0,0,0,.35); --max:1100px; --gap:22px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; color:var(--ink); background:#000;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,sans-serif}
 
-  <link rel="preload" href="tlo.webp" as="image">
-  <link rel="stylesheet" href="styles.css">
-  <meta name="description" content="Kursy motorowodne i żeglarskie, szkolenia ISSA, wydarzenia nad Jeziorem Pile.">
-  <meta property="og:title" content="Klub Motorowodny Borne Sulinowo">
-  <meta property="og:description" content="Dołącz do szkoleń i wydarzeń na wodzie.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="logo.jpg">
-  <meta name="color-scheme" content="light dark">
+    /* ===== Topbar (bez JS, zawija się ładnie) ===== */
+    .topbar{
+      position:sticky; top:0; z-index:10;
+      display:flex; flex-wrap:wrap; align-items:center; gap:10px;
+      padding:10px 12px; background:rgba(0,0,0,.6); backdrop-filter:saturate(1.1) blur(6px)
+    }
+    .brand{display:inline-flex; align-items:center; gap:8px; text-decoration:none; color:#fff; font-weight:800}
+    .brand img{width:28px; height:28px; border-radius:6px; object-fit:cover}
+    .nav{display:flex; gap:10px; flex:1 1 100%; margin-top:6px; flex-wrap:wrap}
+    .nav a{color:#fff; text-decoration:none; padding:8px 12px; border-radius:999px}
+    .nav a:hover{background:rgba(255,255,255,.12)}
+
+    /* ===== Hero ===== */
+    .hero{position:relative; min-height:68vh; display:grid; place-items:center; text-align:center; overflow:hidden}
+    .hero__bg{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2}
+    .hero__overlay{position:absolute; inset:0; z-index:-1;
+      background:linear-gradient(180deg, rgba(0,0,0,.65), rgba(0,0,0,.35) 40%, rgba(0,0,0,.78))}
+    .logo-row{max-width:var(--max); margin:18px auto 0; display:flex; gap:12px; flex-wrap:wrap;
+      justify-content:center; align-items:center; padding:0 12px}
+    .logo-chip{max-height:78px; width:auto; height:auto; display:block; background:var(--chip);
+      padding:6px 8px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,.35)}
+    .logo-chip--light{background:#fff}
+    .hero__content{padding:54px 16px 70px}
+    h1{margin:0 0 10px; font-size:clamp(28px,5vw,56px); line-height:1.05}
+    .lead{margin:0 0 22px; font-size:clamp(16px,2.6vw,22px); color:var(--muted)}
+    .cta{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
+    .btn{display:inline-block; padding:12px 18px; border-radius:999px; text-decoration:none; font-weight:800}
+    .btn--primary{background:var(--accent); color:#111}
+    .btn--ghost{background:transparent; color:#fff; border:2px solid rgba(255,255,255,.8)}
+
+    /* ===== Layout sections ===== */
+    .section{padding:56px 16px; text-align:center}
+    .section h2{font-size:clamp(24px,4vw,40px); margin:0 0 18px}
+    .container{max-width:var(--max); margin:0 auto}
+    .card{background:var(--card); color:#fff; text-align:left; padding:22px 20px; border-radius:var(--radius); box-shadow:var(--shadow)}
+    .grid{display:grid; gap:var(--gap)}
+    .grid--2{grid-template-columns:repeat(2,1fr)}
+    .grid--3{grid-template-columns:repeat(3,1fr)}
+    @media (max-width: 900px){.grid--2,.grid--3{grid-template-columns:1fr}}
+
+    .card h3{margin:6px 0 10px; font-size:clamp(18px,2.8vw,22px); color:var(--accent);
+      border-bottom:1px solid rgba(255,255,255,.2); padding-bottom:6px}
+    .list{list-style:none; padding:0; margin:0; display:grid; gap:10px}
+    .list strong{color:var(--accent)}
+    .badges{display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 0; padding:0; list-style:none}
+    .badges li{background:rgba(255,255,255,.12); padding:8px 12px; border-radius:999px; font-weight:600}
+
+    .card--event h4{margin:0 0 6px}
+    .event-meta{opacity:.9; margin:0 0 10px}
+    .event-date{font-size:26px; font-weight:900; letter-spacing:.5px; margin:0 0 14px}
+    .btn--full{display:block; text-align:center}
+
+    /* ===== Embed & map ===== */
+    .embed{max-width:min(100%, var(--max)); margin:0 auto; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow)}
+    .embed iframe{display:block; width:100%; height:min(70vh, 720px); border:0; background:#000}
+    .map{max-width:var(--max); margin:16px auto 0; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow)}
+    .map iframe{width:100%; height:320px; border:0}
+
+    /* ===== Footer ===== */
+    .footer{background:var(--footer); color:#fff; padding:32px 16px}
+    .contact{max-width:var(--max); margin:0 auto 10px; text-align:center}
+    .contact a{color:var(--accent); text-decoration:none}
+    .social{display:flex; gap:16px; justify-content:center; margin-top:6px}
+    .copy{text-align:center; opacity:.9}
+  </style>
 </head>
 <body>
-  <!-- NAV -->
-  <header class="topbar" id="topbar">
-    <a href="#" class="brand">
-      <img src="logo.jpg" alt="" width="32" height="32" loading="lazy"> KMB SULI
+  <!-- TOP -->
+  <header class="topbar">
+    <a class="brand" href="#">
+      <img src="logo.jpg" alt="">
+      <span>KMB SULI</span>
     </a>
-    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="nav">
-      <span></span><span></span><span></span>
-    </button>
-    <nav id="nav" class="nav">
+    <nav class="nav" aria-label="Główne">
       <a href="#about">O nas</a>
       <a href="#courses">Kursy</a>
       <a href="#schedule">Terminy</a>
@@ -37,47 +108,48 @@
     <div class="hero__overlay" aria-hidden="true"></div>
 
     <div class="logo-row" aria-label="Logotypy">
-      <img src="logo.jpg" width="180" height="180" alt="Klub Motorowodny" class="logo-chip">
-      <img src="wopr.jpg" width="200" height="120" alt="WOPR" class="logo-chip">
-      <img src="ISSA-logo.png" width="360" height="120" alt="ISSA" class="logo-chip logo-chip--light">
-      <img src="pzm.JPG" width="180" height="180" alt="PZM" class="logo-chip">
+      <img class="logo-chip" src="logo.jpg" alt="Klub Motorowodny" loading="lazy">
+      <img class="logo-chip" src="wopr.jpg" alt="WOPR" loading="lazy">
+      <img class="logo-chip logo-chip--light" src="ISSA-logo.png" alt="ISSA" loading="lazy">
+      <img class="logo-chip" src="pzm.JPG" alt="PZM" loading="lazy">
     </div>
 
     <div class="hero__content">
       <h1>Klub Motorowodny Borne Sulinowo</h1>
-      <p>Szkolenia motorowodne i żeglarskie nad Jeziorem Pile</p>
+      <p class="lead">Szkolenia motorowodne i żeglarskie nad Jeziorem Pile</p>
       <div class="cta">
-        <a class="btn" href="#schedule">Zapisz się</a>
+        <a class="btn btn--primary" href="#schedule">Zapisz się</a>
         <a class="btn btn--ghost" href="#courses">Sprawdź kursy</a>
       </div>
     </div>
 
     <picture>
       <source srcset="tlo.webp" type="image/webp">
-      <img src="tlo.webp" alt="" class="hero__bg" loading="eager" decoding="async">
+      <img class="hero__bg" src="tlo.webp" alt="">
     </picture>
   </section>
 
   <main id="main">
-    <!-- ABOUT -->
+    <!-- O nas -->
     <section id="about" class="section">
       <h2>O nas</h2>
-      <div class="card">
-        <p>Promujemy bezpieczną rekreację na wodzie. Prowadzimy kursy, egzaminy i wydarzenia. Bazujemy na praktyce i dobrym sprzęcie.</p>
-        <ul class="badges">
-          <li>Śródlądzie + Bałtyk</li>
-          <li>ISSA & PZMWiNW</li>
-          <li>Instruktorzy z doświadczeniem</li>
-        </ul>
+      <div class="container">
+        <article class="card">
+          <p>Promujemy bezpieczną rekreację na wodzie. Prowadzimy kursy, egzaminy i wydarzenia. Bazujemy na praktyce i dobrym sprzęcie.</p>
+          <ul class="badges">
+            <li>Śródlądzie + Bałtyk</li>
+            <li>ISSA & PZMWiNW</li>
+            <li>Instruktorzy z doświadczeniem</li>
+          </ul>
+        </article>
       </div>
     </section>
 
-    <!-- COURSES -->
+    <!-- Kursy -->
     <section id="courses" class="section">
       <h2>Nasze kursy</h2>
-
-      <div class="grid grid--2">
-        <div class="card">
+      <div class="container grid grid--2">
+        <article class="card">
           <h3>PZMWiNW</h3>
           <ul class="list">
             <li><strong>Sternik motorowodny</strong> – min. 14 lat; do 16 r.ż. do 60 kW; śródlądzie + 2 Mm w dzień.</li>
@@ -85,63 +157,54 @@
             <li><strong>Kapitan motorowodny</strong> – patent MSM + 6 rejsów (≥400 Mm).</li>
             <li><strong>Holowanie narciarza</strong> – uprawnienia do holowania obiektów rekreacyjnych.</li>
           </ul>
-        </div>
+        </article>
 
-        <div class="card">
+        <article class="card">
           <h3>ISSA</h3>
           <ul class="list">
             <li><strong>Inland Power Yacht Skipper</strong> – min. 14 lat; śródlądzie + do 2 Mm.</li>
             <li><strong>Inshore Power Yacht Skipper</strong> – min. 18 lat; przybrzeżnie do 20 Mm.</li>
             <li><strong>Offshore Power Yacht Skipper</strong> – min. 18 lat; bez ograniczeń, wymagane SRC, 1st aid, safety.</li>
           </ul>
-        </div>
+        </article>
       </div>
     </section>
 
-    <!-- SCHEDULE -->
+    <!-- Terminy -->
     <section id="schedule" class="section">
       <h2>Najbliższe terminy</h2>
-      <div class="grid grid--3">
+      <div class="container grid grid--3">
         <article class="card card--event">
           <h4>Sternik motorowodny</h4>
           <p class="event-meta">Sob–Ndz · Jezioro Pile · Start 9:00</p>
           <p class="event-date">24–25.08</p>
-          <a class="btn btn--full" href="mailto:letsgoborne@gmail.com?subject=Zapis%20na%20Sternik%20motorowodny">Zapis e-mail</a>
+          <a class="btn btn--full btn--primary" href="mailto:letsgoborne@gmail.com?subject=Zapis%20na%20Sternik%20motorowodny">Zapis e-mail</a>
         </article>
 
         <article class="card card--event">
           <h4>ISSA Inland PYS</h4>
           <p class="event-meta">Pią–Sob · Borne Sulinowo</p>
           <p class="event-date">06–07.09</p>
-          <a class="btn btn--full" href="mailto:letsgoborne@gmail.com?subject=Zapis%20na%20ISSA%20Inland">Zapis e-mail</a>
+          <a class="btn btn--full btn--primary" href="mailto:letsgoborne@gmail.com?subject=Zapis%20na%20ISSA%20Inland">Zapis e-mail</a>
         </article>
 
         <article class="card card--event">
           <h4>Holowanie narciarza</h4>
           <p class="event-meta">1 dzień · Tor treningowy</p>
           <p class="event-date">14.09</p>
-          <a class="btn btn--full" href="mailto:letsgoborne@gmail.com?subject=Zapis%20na%20Holowanie%20narciarza">Zapis e-mail</a>
+          <a class="btn btn--full btn--primary" href="mailto:letsgoborne@gmail.com?subject=Zapis%20na%20Holowanie%20narciarza">Zapis e-mail</a>
         </article>
       </div>
 
-      <details class="card faq">
-        <summary>Nie pasuje termin? Kliknij i zgłoś własny.</summary>
-        <p>Wyślij preferencje terminu na <a href="mailto:letsgoborne@gmail.com">letsgoborne@gmail.com</a> lub zadzwoń.</p>
-      </details>
-    </section>
-
-    <!-- FAQ -->
-    <section class="section">
-      <h2>FAQ</h2>
-      <div class="grid grid--2">
-        <details class="card faq"><summary>Co zabrać na kurs?</summary><p>Dokument tożsamości, odzież na wodę, notatnik. Zapewniamy kamizelki.</p></details>
-        <details class="card faq"><summary>Czy są egzaminy na miejscu?</summary><p>Tak, organizujemy egzaminy po zakończeniu szkolenia (wg przepisów).</p></details>
-        <details class="card faq"><summary>Czy wystawiamy faktury?</summary><p>Tak, na życzenie uczestnika.</p></details>
-        <details class="card faq"><summary>Minimalny wiek?</summary><p>Od 14 lat (zgoda opiekuna). Szczegóły w opisach kursów.</p></details>
+      <div class="container" style="margin-top:var(--gap)">
+        <details class="card">
+          <summary><strong>Nie pasuje termin?</strong> Kliknij i zgłoś własny.</summary>
+          <p>Wyślij preferencje na <a href="mailto:letsgoborne@gmail.com">letsgoborne@gmail.com</a> lub zadzwoń.</p>
+        </details>
       </div>
     </section>
 
-    <!-- GALLERY -->
+    <!-- Galeria -->
     <section id="gallery" class="section">
       <h2>Galeria</h2>
       <div class="embed">
@@ -154,7 +217,7 @@
     </section>
   </main>
 
-  <!-- FOOTER -->
+  <!-- Stopka -->
   <footer id="contact" class="footer" role="contentinfo">
     <address class="contact">
       <p><strong>Adres:</strong> Słoneczna, 78-449 Borne Sulinowo</p>
@@ -174,25 +237,10 @@
       </iframe>
     </div>
     <p class="copy">© <span id="year"></span> Klub Motorowodny Borne Sulinowo</p>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    const bar = document.getElementById('topbar');
-    const ham = document.getElementById('hamburger');
-    const nav = document.getElementById('nav');
-
-    const onScroll = () => {
-      bar.classList.toggle('topbar--scrolled', window.scrollY > 8);
-    };
-    document.addEventListener('scroll', onScroll, {passive:true});
-    onScroll();
-
-    ham.addEventListener('click', () => {
-      const open = nav.classList.toggle('nav--open');
-      ham.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-  </script>
 </body>
 </html>
+```
+
+Chcesz to z powrotem rozbić na `index.html` + `styles.css` po testach? Dam Ci identyczny CSS jako osobny plik.
