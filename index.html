@@ -1,214 +1,106 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Klub Motorowodny Borne Sulinowo</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-            background: url('tlo.webp') center center/cover no-repeat fixed;
-            font-family: 'Arial', sans-serif;
-            color: white;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Klub Motorowodny Borne Sulinowo</title>
 
-        .hero {
-            position: relative;
-            text-align: center;
-            padding: 10rem 2rem;
-            color: white;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-            background: rgba(0, 0, 0, 0.5);
-        }
+  <link rel="preload" href="tlo.webp" as="image">
+  <link rel="stylesheet" href="styles.css">
 
-        .hero-logo {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            width: 150px;
-            height: auto;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 5px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-logo-secondary {
-            position: absolute;
-            top: 1rem;
-            left: 180px;
-            width: 183px;
-            height: auto;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 5px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-logo-pzm {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            width: 150px;
-            height: auto;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 5px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-logo-issa {
-            position: absolute;
-            top: 1rem;
-            right: 210px;
-            width: 415px; 
-            height: auto;
-            background: white; 
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        }
-
-        h1 {
-            font-family: 'Helvetica Neue', sans-serif;
-            font-weight: 700;
-            font-size: 4rem;
-            margin: 0 0 1rem;
-        }
-
-        h2 {
-            font-family: 'Helvetica Neue', sans-serif;
-            font-weight: 700;
-            font-size: 3rem;
-            margin: 0 0 1rem;
-        }
-
-        p, li {
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin: 0 0 1.5rem;
-        }
-
-        section {
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        .highlight {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 2rem;
-            border-radius: 10px;
-            margin: 2rem auto;
-            max-width: 1000px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
-            color: white;
-            text-align: left;
-        }
-
-        .highlight h3 {
-            font-size: 1.5rem;
-            color: #ffd700;
-            margin-bottom: 1rem;
-            border-bottom: 2px solid #ffd700;
-            padding-bottom: 0.5rem;
-        }
-
-        .highlight ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .highlight li strong {
-            color: #ffd700;
-        }
-
-        .gallery {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-
-        .gallery iframe {
-            width: 100%;
-            max-width: 600px;
-            height: 600px;
-            border: none;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(15, 32, 39, 0.9);
-            color: #fff;
-        }
-
-        .social-icons a {
-            color: #ffd700;
-            margin: 0 1rem;
-            text-decoration: none;
-            font-size: 1.2rem;
-        }
-
-    </style>
+  <meta name="description" content="Klub Motorowodny Borne Sulinowo – kursy motorowodne i żeglarskie, szkolenia ISSA, wydarzenia nad Jeziorem Pile.">
+  <meta property="og:title" content="Klub Motorowodny Borne Sulinowo">
+  <meta property="og:description" content="Kursy, szkolenia i wydarzenia na wodzie. Dołącz do nas.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="logo.jpg">
+  <meta name="color-scheme" content="light dark">
 </head>
 <body>
+  <header class="hero" role="banner">
+    <div class="hero__overlay" aria-hidden="true"></div>
 
-<header class="hero">
-    <img src="logo.jpg" alt="Logo Klubu Motorowodnego" class="hero-logo">
-    <img src="wopr.jpg" alt="Logo WOPR" class="hero-logo-secondary">
-    <img src="pzm.JPG" alt="Logo PZM" class="hero-logo-pzm">
-    <img src="ISSA-logo.png" alt="Logo ISSA" class="hero-logo-issa">
-    <h1>Klub Motorowodny Borne Sulinowo</h1>
-    <p>Instruktor żeglarstwa i motorowodniactwa w Bornem Sulinowie</p>
-</header>
-
-<section id="about">
-    <h2>O Nas</h2>
-    <div class="highlight">
-        <p>Klub Motorowodny Borne Sulinowo to organizacja promująca aktywności wodne i żeglarskie. Naszym celem jest rozwijanie pasji do sportów wodnych poprzez kursy, szkolenia i wydarzenia.</p>
+    <div class="hero__top">
+      <div class="logo-row" aria-label="Logotypy organizatorów">
+        <img src="logo.jpg" width="180" height="180" alt="Logo Klubu Motorowodnego" class="logo-chip">
+        <img src="wopr.jpg" width="200" height="120" alt="Logo WOPR" class="logo-chip">
+        <img src="ISSA-logo.png" width="360" height="120" alt="Logo ISSA" class="logo-chip logo-chip--light">
+        <img src="pzm.JPG" width="180" height="180" alt="Logo PZM" class="logo-chip">
+      </div>
     </div>
-</section>
 
-<section id="courses">
-    <h2>Nasze Kursy</h2>
-    <div class="highlight">
-        <h3>Kursy PZWMiNW</h3>
-        <ul>
-            <li><strong>Sternik motorowodny:</strong> Ukończone 14 lat. Osoby poniżej 16 lat mogą prowadzić jachty motorowe o mocy silnika do 60 kW. Uprawnienia obejmują prowadzenie jachtów motorowych po wodach śródlądowych oraz po wodach morskich do 2 mil morskich od brzegu w porze dziennej.</li>
-            <li><strong>Motorowodny sternik morski:</strong> Ukończone 18 lat. Wymagane dwa rejsy po wodach morskich o łącznym czasie minimum 200 godzin żeglugi. Uprawnienia obejmują prowadzenie jachtów motorowych po wodach śródlądowych oraz morskich.</li>
-            <li><strong>Kapitan motorowodny:</strong> Ukończone 18 lat. Wymagane posiadanie patentu motorowodnego sternika morskiego oraz odbycie minimum sześciu rejsów, w tym jednego powyżej 400 mil morskich. Uprawnienia obejmują prowadzenie jachtów motorowych po wodach śródlądowych i morskich bez ograniczeń.</li>
-            <li><strong>Kurs na holowanie narciarza wodnego:</strong> Uprawnia do holowania narciarzy wodnych i innych obiektów pływających służących do sportu lub rekreacji. Wymaga posiadania odpowiedniego patentu motorowodnego.</li>
+    <div class="hero__content">
+      <h1>Klub Motorowodny Borne Sulinowo</h1>
+      <p>Instruktor żeglarstwa i motorowodniactwa w Bornem Sulinowie</p>
+      <nav class="cta">
+        <a class="btn" href="#courses">Zobacz kursy</a>
+        <a class="btn btn--ghost" href="#contact">Kontakt</a>
+      </nav>
+    </div>
+
+    <picture>
+      <source srcset="tlo.webp" type="image/webp">
+      <img src="tlo.webp" alt="" class="hero__bg" loading="eager" decoding="async">
+    </picture>
+  </header>
+
+  <main id="main">
+    <section id="about" class="section">
+      <h2>O nas</h2>
+      <div class="card">
+        <p>Klub Motorowodny Borne Sulinowo promuje aktywności wodne i żeglarskie.
+        Prowadzimy kursy, szkolenia oraz organizujemy wydarzenia nad Jeziorem Pile.</p>
+      </div>
+    </section>
+
+    <section id="courses" class="section">
+      <h2>Nasze kursy</h2>
+
+      <div class="card">
+        <h3>Kursy PZMWiNW</h3>
+        <ul class="list">
+          <li><strong>Sternik motorowodny:</strong> min. 14 lat; do 16 lat — jednostki do 60 kW. Uprawnienia: śródlądzie oraz morze do 2 Mm od brzegu w dzień.</li>
+          <li><strong>Motorowodny sternik morski:</strong> min. 18 lat, min. 200 h rejsów morskich. Uprawnienia: śródlądzie i morze.</li>
+          <li><strong>Kapitan motorowodny:</strong> min. 18 lat, patent MSM + 6 rejsów (w tym ≥400 Mm). Uprawnienia: bez ograniczeń.</li>
+          <li><strong>Holowanie narciarza:</strong> uprawnienia do holowania narciarzy i obiektów rekreacyjnych (wymagany odpowiedni patent).</li>
         </ul>
+      </div>
 
+      <div class="card">
         <h3>Certyfikaty ISSA</h3>
-        <ul>
-            <li><strong>Inland Power Yacht Skipper:</strong> Ukończone 14 lat. Uprawnia do prowadzenia jachtów motorowych po wodach śródlądowych oraz po wodach morskich w odległości do 2 mil morskich od brzegu w porze dziennej. Możliwość holowania narciarzy wodnych i innych obiektów pływających.</li>
-            <li><strong>Inshore Power Yacht Skipper:</strong> Ukończone 18 lat. Uprawnia do żeglugi przybrzeżnej do 20 mil morskich od brzegu, po morzach zamkniętych i otwartych, z wyłączeniem wód pływowych. Wymaga doświadczenia w rejsach morskich oraz umiejętności z zakresu Inland Power Yacht Skipper.</li>
-            <li><strong>Offshore Power Yacht Skipper:</strong> Ukończone 18 lat. Uprawnia do żeglugi rekreacyjnej po wodach morskich bez ograniczeń odległości od brzegu, obejmuje wody pływowe i otwarte oceany. Wymaga doświadczenia w samodzielnym prowadzeniu jachtów motorowych oraz posiadania certyfikatów operatora radiowego SRC, pierwszej pomocy i safety training.</li>
+        <ul class="list">
+          <li><strong>Inland Power Yacht Skipper:</strong> min. 14 lat; śródlądzie + morze do 2 Mm w dzień; możliwość holowania.</li>
+          <li><strong>Inshore Power Yacht Skipper:</strong> min. 18 lat; żegluga przybrzeżna do 20 Mm; wymagane doświadczenie.</li>
+          <li><strong>Offshore Power Yacht Skipper:</strong> min. 18 lat; pełne morze bez ograniczeń; wymagane m.in. SRC, pierwsza pomoc, safety.</li>
         </ul>
-    </div>
-</section>
+      </div>
+    </section>
 
+    <section id="gallery" class="section">
+      <h2>Galeria</h2>
+      <div class="embed">
+        <iframe
+          title="Instagram Klub Motorowodny Borne Sulinowo"
+          src="https://www.instagram.com/klub_motorowodny_borne_s/embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </section>
+  </main>
 
-<section id="gallery">
-    <h2>Galeria</h2>
-    <div class="gallery">
-        <iframe src="https://www.instagram.com/klub_motorowodny_borne_s/embed" allowfullscreen="true"></iframe>
-    </div>
-</section>
+  <footer id="contact" class="footer" role="contentinfo">
+    <address class="contact">
+      <p><strong>Adres:</strong> Słoneczna, 78-449 Borne Sulinowo, Polska</p>
+      <p><strong>Telefon:</strong> <a href="tel:+48502742526">+48 502 742 526</a></p>
+      <nav class="social">
+        <a href="https://www.facebook.com/kmborne/" rel="me">Facebook</a>
+        <a href="https://www.instagram.com/klub_motorowodny_borne_s/" rel="me">Instagram</a>
+      </nav>
+    </address>
+    <p class="copy">© <span id="year"></span> Klub Motorowodny Borne Sulinowo</p>
+  </footer>
 
-<footer>
-    <p><strong>Adres:</strong> Słoneczna, 78-449 Borne Sulinowo, Polska</p>
-    <p><strong>Telefon:</strong> +48 502 742 526</p>
-    <div class="social-icons">
-        <a href="https://www.facebook.com/kmborne/">Facebook</a>
-        <a href="https://www.instagram.com/klub_motorowodny_borne_s/">Instagram</a>
-    </div>
-    <p>© 2024 Klub Motorowodny Borne Sulinowo</p>
-</footer>
-
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
