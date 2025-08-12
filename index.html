@@ -1,6 +1,3 @@
-OK. Masz **uniwersalną, odporną** wersję w jednym pliku (bez JS, nic się nie rozjedzie). Wrzucasz jako `index.html` i gotowe.
-
-```html
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -8,93 +5,16 @@ OK. Masz **uniwersalną, odporną** wersję w jednym pliku (bez JS, nic się nie
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Klub Motorowodny Borne Sulinowo</title>
   <meta name="description" content="Kursy motorowodne i żeglarskie, szkolenia ISSA, wydarzenia nad Jeziorem Pile." />
-  <meta name="color-scheme" content="light dark" />
-  <style>
-    /* ===== Reset & base ===== */
-    :root{
-      --ink:#fff; --muted:#dfe3e6; --accent:#ffd700;
-      --chip:rgba(0,0,0,.55); --card:rgba(0,0,0,.72); --footer:rgba(15,32,39,.92);
-      --radius:16px; --shadow:0 12px 28px rgba(0,0,0,.35); --max:1100px; --gap:22px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0; color:var(--ink); background:#000;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,sans-serif}
-
-    /* ===== Topbar (bez JS, zawija się ładnie) ===== */
-    .topbar{
-      position:sticky; top:0; z-index:10;
-      display:flex; flex-wrap:wrap; align-items:center; gap:10px;
-      padding:10px 12px; background:rgba(0,0,0,.6); backdrop-filter:saturate(1.1) blur(6px)
-    }
-    .brand{display:inline-flex; align-items:center; gap:8px; text-decoration:none; color:#fff; font-weight:800}
-    .brand img{width:28px; height:28px; border-radius:6px; object-fit:cover}
-    .nav{display:flex; gap:10px; flex:1 1 100%; margin-top:6px; flex-wrap:wrap}
-    .nav a{color:#fff; text-decoration:none; padding:8px 12px; border-radius:999px}
-    .nav a:hover{background:rgba(255,255,255,.12)}
-
-    /* ===== Hero ===== */
-    .hero{position:relative; min-height:68vh; display:grid; place-items:center; text-align:center; overflow:hidden}
-    .hero__bg{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:-2}
-    .hero__overlay{position:absolute; inset:0; z-index:-1;
-      background:linear-gradient(180deg, rgba(0,0,0,.65), rgba(0,0,0,.35) 40%, rgba(0,0,0,.78))}
-    .logo-row{max-width:var(--max); margin:18px auto 0; display:flex; gap:12px; flex-wrap:wrap;
-      justify-content:center; align-items:center; padding:0 12px}
-    .logo-chip{max-height:78px; width:auto; height:auto; display:block; background:var(--chip);
-      padding:6px 8px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,.35)}
-    .logo-chip--light{background:#fff}
-    .hero__content{padding:54px 16px 70px}
-    h1{margin:0 0 10px; font-size:clamp(28px,5vw,56px); line-height:1.05}
-    .lead{margin:0 0 22px; font-size:clamp(16px,2.6vw,22px); color:var(--muted)}
-    .cta{display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
-    .btn{display:inline-block; padding:12px 18px; border-radius:999px; text-decoration:none; font-weight:800}
-    .btn--primary{background:var(--accent); color:#111}
-    .btn--ghost{background:transparent; color:#fff; border:2px solid rgba(255,255,255,.8)}
-
-    /* ===== Layout sections ===== */
-    .section{padding:56px 16px; text-align:center}
-    .section h2{font-size:clamp(24px,4vw,40px); margin:0 0 18px}
-    .container{max-width:var(--max); margin:0 auto}
-    .card{background:var(--card); color:#fff; text-align:left; padding:22px 20px; border-radius:var(--radius); box-shadow:var(--shadow)}
-    .grid{display:grid; gap:var(--gap)}
-    .grid--2{grid-template-columns:repeat(2,1fr)}
-    .grid--3{grid-template-columns:repeat(3,1fr)}
-    @media (max-width: 900px){.grid--2,.grid--3{grid-template-columns:1fr}}
-
-    .card h3{margin:6px 0 10px; font-size:clamp(18px,2.8vw,22px); color:var(--accent);
-      border-bottom:1px solid rgba(255,255,255,.2); padding-bottom:6px}
-    .list{list-style:none; padding:0; margin:0; display:grid; gap:10px}
-    .list strong{color:var(--accent)}
-    .badges{display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 0; padding:0; list-style:none}
-    .badges li{background:rgba(255,255,255,.12); padding:8px 12px; border-radius:999px; font-weight:600}
-
-    .card--event h4{margin:0 0 6px}
-    .event-meta{opacity:.9; margin:0 0 10px}
-    .event-date{font-size:26px; font-weight:900; letter-spacing:.5px; margin:0 0 14px}
-    .btn--full{display:block; text-align:center}
-
-    /* ===== Embed & map ===== */
-    .embed{max-width:min(100%, var(--max)); margin:0 auto; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow)}
-    .embed iframe{display:block; width:100%; height:min(70vh, 720px); border:0; background:#000}
-    .map{max-width:var(--max); margin:16px auto 0; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow)}
-    .map iframe{width:100%; height:320px; border:0}
-
-    /* ===== Footer ===== */
-    .footer{background:var(--footer); color:#fff; padding:32px 16px}
-    .contact{max-width:var(--max); margin:0 auto 10px; text-align:center}
-    .contact a{color:var(--accent); text-decoration:none}
-    .social{display:flex; gap:16px; justify-content:center; margin-top:6px}
-    .copy{text-align:center; opacity:.9}
-  </style>
+  <link rel="preload" href="tlo.webp" as="image">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- TOP -->
-  <header class="topbar">
+  <header class="bar">
     <a class="brand" href="#">
-      <img src="logo.jpg" alt="">
+      <img src="logo.jpg" alt="" width="28" height="28">
       <span>KMB SULI</span>
     </a>
-    <nav class="nav" aria-label="Główne">
+    <nav class="menu">
       <a href="#about">O nas</a>
       <a href="#courses">Kursy</a>
       <a href="#schedule">Terminy</a>
@@ -103,144 +23,125 @@ OK. Masz **uniwersalną, odporną** wersję w jednym pliku (bez JS, nic się nie
     </nav>
   </header>
 
-  <!-- HERO -->
-  <section class="hero" role="banner">
-    <div class="hero__overlay" aria-hidden="true"></div>
-
-    <div class="logo-row" aria-label="Logotypy">
-      <img class="logo-chip" src="logo.jpg" alt="Klub Motorowodny" loading="lazy">
-      <img class="logo-chip" src="wopr.jpg" alt="WOPR" loading="lazy">
-      <img class="logo-chip logo-chip--light" src="ISSA-logo.png" alt="ISSA" loading="lazy">
-      <img class="logo-chip" src="pzm.JPG" alt="PZM" loading="lazy">
-    </div>
-
-    <div class="hero__content">
-      <h1>Klub Motorowodny Borne Sulinowo</h1>
-      <p class="lead">Szkolenia motorowodne i żeglarskie nad Jeziorem Pile</p>
-      <div class="cta">
-        <a class="btn btn--primary" href="#schedule">Zapisz się</a>
-        <a class="btn btn--ghost" href="#courses">Sprawdź kursy</a>
-      </div>
-    </div>
-
+  <section class="hero">
+    <div class="hero__layer"></div>
     <picture>
       <source srcset="tlo.webp" type="image/webp">
-      <img class="hero__bg" src="tlo.webp" alt="">
+      <img src="tlo.webp" class="hero__bg" alt="">
     </picture>
+    <div class="hero__content">
+      <h1>Klub Motorowodny Borne Sulinowo</h1>
+      <p>Szkolenia motorowodne i żeglarskie nad Jeziorem Pile</p>
+      <div class="cta">
+        <a class="btn" href="#schedule">Zapisz się</a>
+        <a class="btn btn--ghost" href="#courses">Sprawdź kursy</a>
+      </div>
+      <div class="logos">
+        <img src="wopr.jpg" alt="WOPR">
+        <img src="ISSA-logo.png" alt="ISSA" class="logos--light">
+        <img src="pzm.JPG" alt="PZM">
+      </div>
+    </div>
   </section>
 
-  <main id="main">
-    <!-- O nas -->
+  <main>
     <section id="about" class="section">
-      <h2>O nas</h2>
-      <div class="container">
-        <article class="card">
+      <div class="wrap">
+        <h2>O nas</h2>
+        <div class="card">
           <p>Promujemy bezpieczną rekreację na wodzie. Prowadzimy kursy, egzaminy i wydarzenia. Bazujemy na praktyce i dobrym sprzęcie.</p>
-          <ul class="badges">
+          <ul class="chips">
             <li>Śródlądzie + Bałtyk</li>
             <li>ISSA & PZMWiNW</li>
             <li>Instruktorzy z doświadczeniem</li>
           </ul>
-        </article>
+        </div>
       </div>
     </section>
 
-    <!-- Kursy -->
     <section id="courses" class="section">
-      <h2>Nasze kursy</h2>
-      <div class="container grid grid--2">
-        <article class="card">
-          <h3>PZMWiNW</h3>
-          <ul class="list">
-            <li><strong>Sternik motorowodny</strong> – min. 14 lat; do 16 r.ż. do 60 kW; śródlądzie + 2 Mm w dzień.</li>
-            <li><strong>Motorowodny sternik morski</strong> – min. 18 lat; ≥200 h rejsów morskich.</li>
-            <li><strong>Kapitan motorowodny</strong> – patent MSM + 6 rejsów (≥400 Mm).</li>
-            <li><strong>Holowanie narciarza</strong> – uprawnienia do holowania obiektów rekreacyjnych.</li>
-          </ul>
-        </article>
-
-        <article class="card">
-          <h3>ISSA</h3>
-          <ul class="list">
-            <li><strong>Inland Power Yacht Skipper</strong> – min. 14 lat; śródlądzie + do 2 Mm.</li>
-            <li><strong>Inshore Power Yacht Skipper</strong> – min. 18 lat; przybrzeżnie do 20 Mm.</li>
-            <li><strong>Offshore Power Yacht Skipper</strong> – min. 18 lat; bez ograniczeń, wymagane SRC, 1st aid, safety.</li>
-          </ul>
-        </article>
+      <div class="wrap">
+        <h2>Nasze kursy</h2>
+        <div class="grid g2">
+          <div class="card">
+            <h3>PZMWiNW</h3>
+            <ul class="list">
+              <li><strong>Sternik motorowodny</strong> – min. 14 lat; do 16 r.ż. do 60 kW; śródlądzie + 2 Mm w dzień.</li>
+              <li><strong>Motorowodny sternik morski</strong> – min. 18 lat; ≥200 h rejsów morskich.</li>
+              <li><strong>Kapitan motorowodny</strong> – patent MSM + 6 rejsów (≥400 Mm).</li>
+              <li><strong>Holowanie narciarza</strong> – uprawnienia do holowania obiektów rekreacyjnych.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>ISSA</h3>
+            <ul class="list">
+              <li><strong>Inland Power Yacht Skipper</strong> – min. 14 lat; śródlądzie + do 2 Mm.</li>
+              <li><strong>Inshore Power Yacht Skipper</strong> – min. 18 lat; przybrzeżnie do 20 Mm.</li>
+              <li><strong>Offshore Power Yacht Skipper</strong> – min. 18 lat; bez ograniczeń, wymagane SRC, 1st aid, safety.</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Terminy -->
     <section id="schedule" class="section">
-      <h2>Najbliższe terminy</h2>
-      <div class="container grid grid--3">
-        <article class="card card--event">
-          <h4>Sternik motorowodny</h4>
-          <p class="event-meta">Sob–Ndz · Jezioro Pile · Start 9:00</p>
-          <p class="event-date">24–25.08</p>
-          <a class="btn btn--full btn--primary" href="mailto:letsgoborne@gmail.com?subject=Zapis%20na%20Sternik%20motorowodny">Zapis e-mail</a>
-        </article>
+      <div class="wrap">
+        <h2>Najbliższe terminy</h2>
+        <div class="grid g3">
+          <article class="card event">
+            <h4>Sternik motorowodny</h4>
+            <p class="meta">Sob–Ndz · Jezioro Pile · Start 9:00</p>
+            <p class="date">24–25.08</p>
+            <a class="btn btn--full" href="mailto:letsgoborne@gmail.com?subject=Zapis%20na%20Sternik%20motorowodny">Zapis e-mail</a>
+          </article>
+          <article class="card event">
+            <h4>ISSA Inland PYS</h4>
+            <p class="meta">Pią–Sob · Borne Sulinowo</p>
+            <p class="date">06–07.09</p>
+            <a class="btn btn--full" href="mailto:letsgoborne@gmail.com?subject=Zapis%20na%20ISSA%20Inland">Zapis e-mail</a>
+          </article>
+          <article class="card event">
+            <h4>Holowanie narciarza</h4>
+            <p class="meta">1 dzień · Tor treningowy</p>
+            <p class="date">14.09</p>
+            <a class="btn btn--full" href="mailto:letsgoborne@gmail.com?subject=Zapis%20na%20Holowanie%20narciarza">Zapis e-mail</a>
+          </article>
+        </div>
 
-        <article class="card card--event">
-          <h4>ISSA Inland PYS</h4>
-          <p class="event-meta">Pią–Sob · Borne Sulinowo</p>
-          <p class="event-date">06–07.09</p>
-          <a class="btn btn--full btn--primary" href="mailto:letsgoborne@gmail.com?subject=Zapis%20na%20ISSA%20Inland">Zapis e-mail</a>
-        </article>
-
-        <article class="card card--event">
-          <h4>Holowanie narciarza</h4>
-          <p class="event-meta">1 dzień · Tor treningowy</p>
-          <p class="event-date">14.09</p>
-          <a class="btn btn--full btn--primary" href="mailto:letsgoborne@gmail.com?subject=Zapis%20na%20Holowanie%20narciarza">Zapis e-mail</a>
-        </article>
-      </div>
-
-      <div class="container" style="margin-top:var(--gap)">
-        <details class="card">
-          <summary><strong>Nie pasuje termin?</strong> Kliknij i zgłoś własny.</summary>
+        <details class="card" style="margin-top:18px">
+          <summary><strong>Nie pasuje termin?</strong> Zgłoś własny.</summary>
           <p>Wyślij preferencje na <a href="mailto:letsgoborne@gmail.com">letsgoborne@gmail.com</a> lub zadzwoń.</p>
         </details>
       </div>
     </section>
 
-    <!-- Galeria -->
     <section id="gallery" class="section">
-      <h2>Galeria</h2>
-      <div class="embed">
-        <iframe
-          title="Instagram Klub Motorowodny Borne Sulinowo"
-          src="https://www.instagram.com/klub_motorowodny_borne_s/embed"
-          loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+      <div class="wrap">
+        <h2>Galeria</h2>
+        <div class="embed">
+          <iframe title="Instagram" src="https://www.instagram.com/klub_motorowodny_borne_s/embed" loading="lazy"></iframe>
+        </div>
       </div>
     </section>
   </main>
 
-  <!-- Stopka -->
-  <footer id="contact" class="footer" role="contentinfo">
-    <address class="contact">
-      <p><strong>Adres:</strong> Słoneczna, 78-449 Borne Sulinowo</p>
-      <p><strong>Telefon:</strong> <a href="tel:+48502742526">+48 502 742 526</a></p>
-      <p><strong>E-mail:</strong> <a href="mailto:letsgoborne@gmail.com">letsgoborne@gmail.com</a></p>
-      <nav class="social">
-        <a href="https://www.facebook.com/kmborne/" rel="me">Facebook</a>
-        <a href="https://www.instagram.com/klub_motorowodny_borne_s/" rel="me">Instagram</a>
-      </nav>
-    </address>
-    <div class="map">
-      <iframe
-        title="Mapa dojazdu"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps?q=Borne%20Sulinowo%20Pla%C5%BCa%20S%C5%82oneczna&output=embed">
-      </iframe>
+  <footer id="contact" class="foot">
+    <div class="wrap">
+      <address class="contact">
+        <p><strong>Adres:</strong> Słoneczna, 78-449 Borne Sulinowo</p>
+        <p><strong>Telefon:</strong> <a href="tel:+48502742526">+48 502 742 526</a></p>
+        <p><strong>E-mail:</strong> <a href="mailto:letsgoborne@gmail.com">letsgoborne@gmail.com</a></p>
+        <nav class="social">
+          <a href="https://www.facebook.com/kmborne/">Facebook</a>
+          <a href="https://www.instagram.com/klub_motorowodny_borne_s/">Instagram</a>
+        </nav>
+      </address>
+      <div class="map">
+        <iframe title="Mapa dojazdu" loading="lazy" src="https://www.google.com/maps?q=Borne%20Sulinowo%20Pla%C5%BCa%20S%C5%82oneczna&output=embed"></iframe>
+      </div>
+      <p class="copy">© <span id="y"></span> Klub Motorowodny Borne Sulinowo</p>
     </div>
-    <p class="copy">© <span id="year"></span> Klub Motorowodny Borne Sulinowo</p>
-    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
   </footer>
 </body>
 </html>
-```
-
-Chcesz to z powrotem rozbić na `index.html` + `styles.css` po testach? Dam Ci identyczny CSS jako osobny plik.
